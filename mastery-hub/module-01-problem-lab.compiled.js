@@ -4071,7 +4071,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     }), ". What is its dot product with ", /*#__PURE__*/React.createElement(T, {
       src: "\\mathbf{a}"
     }), "?"),
-    options: ["1/3", "1/√3", "√3/3 (same as 1/√3)", "1"],
+    options: ["1/3", "1/√3", "1/√2", "1"],
     answer: "B",
     hints: [{
       label: "Conceptual redirect",
@@ -4081,7 +4081,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
       text: "a + b + c = (1, 1, 1). Magnitude = √3. So w = (1/√3, 1/√3, 1/√3). w · a = 1/√3."
     }, {
       label: "Near-complete",
-      text: "1/√3 ≈ 0.577. Note (B) and (C) are equivalent — rationalized: 1/√3 = √3/3."
+      text: "1/√3 ≈ 0.577. Equivalent rationalized form: √3/3."
     }],
     solution: {
       steps: [{
@@ -4097,12 +4097,12 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
         label: "VERIFICATION",
         body: "Geometric: w points along the main diagonal of the unit cube. Its angle with a (x-axis) satisfies cos θ = w · a = 1/√3. So θ = arccos(1/√3) ≈ 54.7°."
       }],
-      gateCheck: "1/√3 and √3/3 are the SAME number — different rationalization. Both correct.",
+      gateCheck: "Unit vector dot axis vector = direction cosine. For the all-ones diagonal in ℝⁿ, this is 1/√n.",
       speed: "(1,1,1)/√3 instantly. Dot with x̂ gives 1/√3. 20 seconds.",
       whatMadeHard: "Trap: dotting with a BEFORE normalizing gives 1, which is option (D). Read the question carefully: the question wants 'dot product of unit vector w with a', not 'dot product of (a+b+c) with a'.",
       generalization: "The diagonal of the unit n-cube has direction (1,1,...,1)/√n. Its dot with any axis vector is 1/√n.",
       linkedConcept: "Module 8 — Orthonormal basis and direction cosines.",
-      negAdvisory: "Attempt: (B) and (C) are mathematically identical — both correct as rationalizations. (D) is the trap for unnormalized dot. (A) = 1/3 looks like the squared answer."
+      negAdvisory: "Attempt: (D) is the trap for un-normalized dot. (A) = 1/3 is the SQUARED direction cosine. (C) = 1/√2 fits a 2D diagonal, not 3D. (B) is 1/√3."
     }
   }];
   const C12_TECHNIQUES = [{
@@ -4491,7 +4491,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
       text: "Point dividing in ratio 1:3 from A to B is at 1/4 of the way from A: P = (3/4)A + (1/4)B. This is a convex combination."
     }, {
       label: "Key step",
-      text: "Wait — the ratio 1:3 from A to B means AP:PB = 1:3, so P is at 1/4 of the segment from A. P = A + (1/4)(B − A) = (3/4)A + (1/4)B."
+      text: "Ratio 1:3 from A to B means AP:PB = 1:3, so P is at 1/4 of the way from A toward B. P = A + (1/4)(B − A) = (3/4)A + (1/4)B."
     }, {
       label: "Near-complete",
       text: "P = (3/4)(2, 3) + (1/4)(10, 11) = (1.5 + 2.5, 2.25 + 2.75) = (4, 5). So p + q = 9."
@@ -4556,7 +4556,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
         body: "a·(1, 0, 1) + b·(0, 1, 1) = (a, b, a + b). Set equal to (4, 5, 6): a = 4, b = 5, a + b = 6. But 4 + 5 = 9 ≠ 6. CONTRADICTION."
       }, {
         label: "COMPUTATION",
-        body: "System is inconsistent — no values of a, b satisfy all three equations. The target (4, 5, 6) is NOT in span{(1,0,1), (1,1,1)}."
+        body: "System is inconsistent — no values of a, b satisfy all three equations. The target (4, 5, 6) is NOT in span{(1,0,1), (0,1,1)}."
       }, {
         label: "VERIFICATION",
         body: "Geometrically: span of two vectors in ℝ³ is a plane through origin. (4, 5, 6) doesn't lie on this plane (its z is too small relative to x + y)."
@@ -5259,7 +5259,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     statement: /*#__PURE__*/React.createElement("span", null, "Let ", /*#__PURE__*/React.createElement(T, {
       src: "\\{\\mathbf{v}_1, \\mathbf{v}_2, \\mathbf{v}_3\\}"
     }), " be a linearly independent set in \u211D\xB3. Which of the following sets is GUARANTEED to be linearly independent?"),
-    options: ["{v₁ + v₂, v₂ + v₃, v₃ + v₁}", "{v₁ + v₂, v₁ − v₂, v₁ + v₂ + v₃}", "{v₁ + v₂, v₂ + v₃, v₁ + v₃, v₁ + v₂ + v₃}", "{v₁ + v₂ + v₃, 2(v₁ + v₂ + v₃), v₁}"],
+    options: ["{v₁ + v₂, v₂ + v₃, v₃ + v₁}", "{v₁ + v₂, v₂ + v₃, v₁ − v₃}", "{v₁ + v₂, v₂ + v₃, v₁ + v₃, v₁ + v₂ + v₃}", "{v₁ + v₂ + v₃, 2(v₁ + v₂ + v₃), v₁}"],
     answer: "A",
     hints: [{
       label: "Conceptual redirect",
@@ -5269,7 +5269,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
       text: "(A): c₁(v₁+v₂) + c₂(v₂+v₃) + c₃(v₃+v₁) = 0 ⇒ (c₁+c₃)v₁ + (c₁+c₂)v₂ + (c₂+c₃)v₃ = 0. Since {v₁, v₂, v₃} independent, each coefficient = 0. System: c₁+c₃ = 0, c₁+c₂ = 0, c₂+c₃ = 0. Solve: c₁ = c₂ = c₃ = 0 (only trivial). Independent."
     }, {
       label: "Near-complete",
-      text: "(B): contains (v₁+v₂) − (v₁−v₂) = 2v₂, and (v₁+v₂+v₃) involves v₃ — 3 vectors in 3D subspace, could be independent. Need to check.\n(C): 4 vectors in 3D subspace (span of v₁, v₂, v₃) — automatically dependent.\n(D): 2nd vector = 2× first → dependent."
+      text: "(B): (v₁+v₂) − (v₂+v₃) − (v₁−v₃) = 0 — explicit dependency. Dependent.\n(C): 4 vectors in 3D subspace (span of v₁, v₂, v₃) — automatically dependent.\n(D): 2nd vector = 2× first → dependent."
     }],
     solution: {
       steps: [{
@@ -5277,13 +5277,13 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
         body: "Independence of derived sets — test each via the LC = 0 method."
       }, {
         label: "KEY STEP",
-        body: "(A): coefficient matrix \n| 1 0 1 |\n| 1 1 0 |\n| 0 1 1 |\non v₁, v₂, v₃ must be invertible. det = 1·(1−0) − 0·(1−0) + 1·(1−0) = 1 + 1 = 2 ≠ 0. INDEPENDENT.\n(B): Check if (v₁+v₂), (v₁−v₂), (v₁+v₂+v₃) have a linear dependence. Sum/difference reasoning gives 2v₁, 2v₂, then independently v₃, so all three are independent — this also passes! But check carefully: c₁(v₁+v₂) + c₂(v₁−v₂) + c₃(v₁+v₂+v₃) = (c₁+c₂+c₃)v₁ + (c₁−c₂+c₃)v₂ + c₃·v₃ = 0. So c₃ = 0, c₁ + c₂ = 0, c₁ − c₂ = 0 → c₁ = c₂ = 0. Independent too!\n(C): 4 vectors in the 3D subspace span{v₁,v₂,v₃} → AUTOMATICALLY DEPENDENT.\n(D): 2·(first) = second → dependent."
+        body: "(A): coefficient matrix on (v₁, v₂, v₃):\n| 1 0 1 |\n| 1 1 0 |\n| 0 1 1 |\nmust be invertible. det = 1·(1−0) − 0·(1−0) + 1·(1−0) = 1 + 1 = 2 ≠ 0. INDEPENDENT.\n(B): Spot 1·(v₁+v₂) − 1·(v₂+v₃) − 1·(v₁−v₃) = v₁ + v₂ − v₂ − v₃ − v₁ + v₃ = 0. Nontrivial LC → DEPENDENT.\n(C): 4 vectors in the 3D subspace span{v₁,v₂,v₃} → AUTOMATICALLY DEPENDENT (count > dim).\n(D): 2·(first) = second → DEPENDENT (scalar multiple)."
       }, {
         label: "COMPUTATION",
-        body: "Both (A) and (B) are independent. (C) and (D) are dependent. Strict GATE answer: (A) is the canonical 'cyclic sum' independence pattern. The intended answer is (A) because the question asks for the FIRST/PRIMARY guaranteed independent set."
+        body: "Only (A) is independent. Answer: (A)."
       }, {
         label: "VERIFICATION",
-        body: "Cyclic sum independence (A): det of the coefficient matrix [[1, 1, 0], [0, 1, 1], [1, 0, 1]] (rows on v₁, v₂, v₃) — same logic, det = 2 ≠ 0."
+        body: "Cyclic sum (A): coefficient matrix has det = 2 ≠ 0. Each pair shares one v_i, but the cyclic pattern keeps it invertible."
       }],
       gateCheck: "Express each derived vector as a linear combination of v₁, v₂, v₃ via a coefficient matrix M. Independence of derived ⇔ M invertible.",
       speed: "60-90 seconds with the coefficient-matrix method.",

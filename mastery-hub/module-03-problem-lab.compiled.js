@@ -3511,8 +3511,8 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     marks: 2,
     timeTarget: 80,
     tags: ["Application Counting"],
-    statement: /*#__PURE__*/React.createElement("span", null, "An n-node electrical network has the requirement that one node is grounded (reference). The number of INDEPENDENT KCL equations is ___."),
-    answer: "n-1",
+    statement: /*#__PURE__*/React.createElement("span", null, "An 8-node electrical network has the requirement that one node is grounded (reference). The number of INDEPENDENT KCL equations is ___."),
+    answer: 7,
     tolerance: 0,
     hints: [{
       label: "Conceptual redirect",
@@ -3522,7 +3522,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
       text: "n nodes → n KCL equations, but only n - 1 are independent."
     }, {
       label: "Near-complete",
-      text: "n - 1. (For NAT, enter the algebraic answer interpretation; for a specific n, n-1.)"
+      text: "For n = 8: 8 - 1 = 7."
     }],
     solution: {
       steps: [{
@@ -3533,10 +3533,10 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
         body: "n nodes, n KCL equations. Sum of all KCL = 0 (total current in = total out). So rank = n - 1."
       }, {
         label: "COMPUTATION",
-        body: "Independent equations: n - 1."
+        body: "For n = 8: independent equations = n - 1 = 7."
       }, {
         label: "VERIFICATION",
-        body: "Grounding one node fixes the redundancy: take n - 1 independent KCL + 1 ground condition."
+        body: "Grounding one node fixes the redundancy: take n - 1 = 7 independent KCL + 1 ground condition."
       }],
       gateCheck: "Conservation laws often have one redundant equation per closed system.",
       speed: "Conceptual: 30 seconds.",

@@ -6219,17 +6219,17 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     }), " of \u211D\xB3, find the first coordinate of ", /*#__PURE__*/React.createElement(T, {
       src: "(2, 3, 1)"
     }), " in B."),
-    answer: 1,
+    answer: 2,
     tolerance: 0,
     hints: [{
       label: "Conceptual redirect",
-      text: "Set up matrix equation: [B] · c = (2, 3, 1) where columns of [B] are the basis vectors."
+      text: "Solve c₁·(1, 1, 0) + c₂·(0, 1, 1) + c₃·(1, 0, 1) = (2, 3, 1)."
     }, {
       label: "Key step",
-      text: "[[1, 0, 1], [1, 1, 0], [0, 1, 1]] · (c₁, c₂, c₃) = (2, 3, 1). Solve."
+      text: "Component equations: c₁ + c₃ = 2 (x), c₁ + c₂ = 3 (y), c₂ + c₃ = 1 (z)."
     }, {
       label: "Near-complete",
-      text: "Augmented:\n[1 0 1 | 2]\n[1 1 0 | 3]\n[0 1 1 | 1]\nR₂ → R₂ - R₁: [1 0 1 | 2; 0 1 -1 | 1; 0 1 1 | 1]. R₃ → R₃ - R₂: [1 0 1 | 2; 0 1 -1 | 1; 0 0 2 | 0]. Back-sub: c₃ = 0, c₂ = 1, c₁ = 2 - 0 = 2.\n\nHmm, that gives c₁ = 2 but the listed answer says 1. Let me re-check.\n\n(1, 1, 0) is the first basis vector with coefficient c₁. (0, 1, 1) is the second with c₂. (1, 0, 1) is the third with c₃.\nSo coefficient on (1, 1, 0) appears in equations: x = c₁ + c₃, y = c₁ + c₂, z = c₂ + c₃.\nSet equal: c₁ + c₃ = 2, c₁ + c₂ = 3, c₂ + c₃ = 1.\nAdd all: 2(c₁ + c₂ + c₃) = 6 → c₁ + c₂ + c₃ = 3.\nFrom each pair: c₁ = 3 - (c₂ + c₃) = 3 - 1 = 2. c₂ = 3 - (c₁ + c₃) = 3 - 2 = 1. c₃ = 3 - (c₁ + c₂) = 3 - 3 = 0.\nSo (c₁, c₂, c₃) = (2, 1, 0). First coordinate = 2. But the answer field says 1. Let me re-examine the problem."
+      text: "Add all three: 2(c₁ + c₂ + c₃) = 6 → c₁ + c₂ + c₃ = 3. Then c₁ = 3 − (c₂ + c₃) = 3 − 1 = 2. So (c₁, c₂, c₃) = (2, 1, 0). First coordinate = 2."
     }],
     solution: {
       steps: [{
@@ -6237,10 +6237,10 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
         body: "Coordinates in custom basis — solve linear system."
       }, {
         label: "KEY STEP",
-        body: "Setup: c₁·(1, 1, 0) + c₂·(0, 1, 1) + c₃·(1, 0, 1) = (2, 3, 1).\nx-comp: c₁ + c₃ = 2.\ny-comp: c₁ + c₂ = 3.\nz-comp: c₂ + c₃ = 1.\nSolve: adding all 3 gives 2(c₁ + c₂ + c₃) = 6 → c₁ + c₂ + c₃ = 3. Then c₁ = 3 - (c₂ + c₃) = 3 - 1 = 2. c₂ = 1, c₃ = 0."
+        body: "Setup: c₁·(1, 1, 0) + c₂·(0, 1, 1) + c₃·(1, 0, 1) = (2, 3, 1).\nx-comp: c₁ + c₃ = 2.\ny-comp: c₁ + c₂ = 3.\nz-comp: c₂ + c₃ = 1."
       }, {
         label: "COMPUTATION",
-        body: "First coordinate c₁ = 2 (note: NAT answer entered in problem may need adjustment to 2)."
+        body: "Add all 3 equations: 2(c₁ + c₂ + c₃) = 6 → c₁ + c₂ + c₃ = 3.\nThen c₁ = 3 − (c₂ + c₃) = 3 − 1 = 2. c₂ = 3 − (c₁ + c₃) = 3 − 2 = 1. c₃ = 3 − (c₁ + c₂) = 3 − 3 = 0.\nFirst coordinate = c₁ = 2."
       }, {
         label: "VERIFICATION",
         body: "2·(1, 1, 0) + 1·(0, 1, 1) + 0·(1, 0, 1) = (2, 2, 0) + (0, 1, 1) + (0, 0, 0) = (2, 3, 1). ✓"
@@ -6406,17 +6406,17 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     }), " be a basis of \u211D\xB3. The third coordinate of ", /*#__PURE__*/React.createElement(T, {
       src: "(4, 5, 3)"
     }), " in B is ___."),
-    answer: 1,
+    answer: 3,
     tolerance: 0,
     hints: [{
       label: "Conceptual redirect",
       text: "Solve a·(1, 0, 1) + b·(0, 1, 1) + c·(1, 1, 0) = (4, 5, 3) for (a, b, c)."
     }, {
       label: "Key step",
-      text: "Equations: a + c = 4 (x), b + c = 5 (y), a + b = 3 (z). Add: 2(a + b + c) = 12 → a + b + c = 6. So c = 6 - 3 = 3? Wait, c = (a + b + c) - (a + b) = 6 - 3 = 3. Hmm, the answer key says 1. Let me recompute."
+      text: "Component equations: a + c = 4 (x), b + c = 5 (y), a + b = 3 (z). Add all three: 2(a + b + c) = 12 → a + b + c = 6."
     }, {
       label: "Near-complete",
-      text: "Solving carefully: a + c = 4 ... a + b = 3 ... b + c = 5. Adding all 3: 2(a + b + c) = 12 → a + b + c = 6. c = 6 - (a + b) = 6 - 3 = 3. a = 6 - (b + c) = 6 - 5 = 1. b = 6 - (a + c) = 6 - 4 = 2.\nSo (a, b, c) = (1, 2, 3). Third coordinate = 3, not 1. Hmm, the listed answer is 1 — but my computation gives 3. Adjusting the answer."
+      text: "Then c = (a + b + c) − (a + b) = 6 − 3 = 3. So (a, b, c) = (1, 2, 3). Third coordinate = 3."
     }],
     solution: {
       steps: [{
@@ -6424,10 +6424,10 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
         body: "Coordinates in custom basis — solve linear system."
       }, {
         label: "KEY STEP",
-        body: "Setup: a·(1, 0, 1) + b·(0, 1, 1) + c·(1, 1, 0) = (4, 5, 3).\nx-comp: a + c = 4. y-comp: b + c = 5. z-comp: a + b = 3.\nAdd all: 2(a + b + c) = 12 → a + b + c = 6. Then a = 6 - (b + c) = 1; b = 6 - (a + c) = 2; c = 6 - (a + b) = 3."
+        body: "Setup: a·(1, 0, 1) + b·(0, 1, 1) + c·(1, 1, 0) = (4, 5, 3).\nx-comp: a + c = 4. y-comp: b + c = 5. z-comp: a + b = 3.\nAdd all: 2(a + b + c) = 12 → a + b + c = 6. Then a = 6 − (b + c) = 1; b = 6 − (a + c) = 2; c = 6 − (a + b) = 3."
       }, {
         label: "COMPUTATION",
-        body: "(a, b, c) = (1, 2, 3). Third coordinate c = 3. (Note: NAT answer adjusted from 1 to 3 per recomputation. Verify in your solving practice.)"
+        body: "(a, b, c) = (1, 2, 3). Third coordinate c = 3."
       }, {
         label: "VERIFICATION",
         body: "1·(1, 0, 1) + 2·(0, 1, 1) + 3·(1, 1, 0) = (1, 0, 1) + (0, 2, 2) + (3, 3, 0) = (4, 5, 3). ✓"

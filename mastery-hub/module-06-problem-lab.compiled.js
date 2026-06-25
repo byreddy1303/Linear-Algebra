@@ -3764,18 +3764,18 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     marks: 2,
     timeTarget: 60,
     tags: ["Function-of-A"],
-    statement: /*#__PURE__*/React.createElement("span", null, "If A has eigenvalues 1, 2, 3, then A\xB2 has eigenvalues 1, ___, ___. (smallest then largest of the two remaining)."),
-    answer: 4,
+    statement: /*#__PURE__*/React.createElement("span", null, "If A has eigenvalues 1, 2, 3, the LARGEST eigenvalue of A\xB2 is ___."),
+    answer: 9,
     tolerance: 0,
     hints: [{
       label: "Conceptual redirect",
-      text: "λ → λ²."
+      text: "λ → λ² under the power rule."
     }, {
       label: "Key step",
-      text: "1² = 1, 2² = 4, 3² = 9."
+      text: "1² = 1, 2² = 4, 3² = 9. Largest is 9."
     }, {
       label: "Near-complete",
-      text: "4 and 9 (4 smaller, 9 larger)."
+      text: "9."
     }],
     solution: {
       steps: [{
@@ -3783,13 +3783,13 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
         body: "Power property."
       }, {
         label: "KEY STEP",
-        body: "Eigvals of A² = (1, 4, 9)."
+        body: "Eigvals of A² = (1, 4, 9). Largest = 9."
       }, {
         label: "COMPUTATION",
-        body: "First missing = 4."
+        body: "9."
       }, {
         label: "VERIFICATION",
-        body: "Same eigenvectors as A."
+        body: "Same eigenvectors as A; only eigenvalues get squared."
       }],
       gateCheck: "λⁿ rule.",
       speed: "5s.",
@@ -5467,34 +5467,34 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     marks: 2,
     timeTarget: 80,
     tags: ["Symmetric Quick"],
-    statement: /*#__PURE__*/React.createElement("span", null, "If A is 4x4 symmetric with trace 10 and det 12, and eigenvalues are 1, 2, 3, ___. Find the missing."),
+    statement: /*#__PURE__*/React.createElement("span", null, "A 4\xD74 symmetric matrix has trace 10 and det 24. Three of its eigenvalues are 1, 2, 3. Find the missing fourth eigenvalue."),
     answer: 4,
     tolerance: 0,
     hints: [{
       label: "Conceptual redirect",
-      text: "Sum = 10 → 1+2+3+λ₄ = 10 → λ₄ = 4."
+      text: "Sum of eigvals = trace. 1 + 2 + 3 + λ₄ = 10 → λ₄ = 4."
     }, {
       label: "Key step",
       text: "4."
     }, {
       label: "Near-complete",
-      text: "Check product: 1·2·3·4 = 24 ≠ 12 — hmm."
+      text: "Cross-check product: 1·2·3·4 = 24 ✓ matches det."
     }],
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "Use trace to find missing."
+        body: "Use trace to find missing eigenvalue."
       }, {
         label: "KEY STEP",
-        body: "λ₁ + λ₂ + λ₃ + λ₄ = 10. 1+2+3+λ₄ = 10 → λ₄ = 4."
+        body: "Σλᵢ = trace: 1 + 2 + 3 + λ₄ = 10 ⇒ λ₄ = 4."
       }, {
         label: "COMPUTATION",
         body: "4."
       }, {
         label: "VERIFICATION",
-        body: "Product: 24 ≠ 12 — problem's det data inconsistent with eigvals 1,2,3. The trace method still gives the missing = 4. Real GATE problem would have consistent data; technique is correct."
+        body: "Product check: 1·2·3·4 = 24 = det ✓. Both invariants confirm λ₄ = 4."
       }],
-      gateCheck: "Trace-method for missing eigval.",
+      gateCheck: "Trace-method for missing eigval, det as cross-check.",
       speed: "10s.",
       whatMadeHard: "Nothing.",
       generalization: "Universal.",
@@ -5547,39 +5547,39 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     marks: 2,
     timeTarget: 120,
     tags: ["KILLER", "Vieta's 3x3"],
-    statement: /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(B, null, "[KILLER]"), " A 3x3 matrix has eigenvalues with sum 9 and product 12. One eigenvalue is 4. The OTHER two are:"),
+    statement: /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(B, null, "[KILLER]"), " A 3\xD73 matrix has eigenvalues with sum 9 and product 24. One eigenvalue is 4. The OTHER two are:"),
     options: ["(3, 1) — sum 4, product 3.", "(2, 3) — sum 5, product 6.", "(5, 0) — sum 5, product 0.", "Cannot be determined without more info."],
-    answer: "C",
+    answer: "B",
     hints: [{
       label: "Conceptual redirect",
-      text: "Let other two be a, b. a + b = 9 - 4 = 5. a·b = 12/4 = 3."
+      text: "Let the other two eigvals be a, b. Use Vieta's: a + b = 9 − 4 = 5 and a·b = 24/4 = 6."
     }, {
       label: "Key step",
-      text: "λ² - 5λ + 3 = 0 → λ = (5 ± √13)/2 — non-integer. So options need re-checking."
+      text: "a, b are roots of λ² − 5λ + 6 = 0."
     }, {
       label: "Near-complete",
-      text: "Trying (B) 2, 3: 2+3 = 5 ✓ but 2·3 = 6 ≠ 3. (A) 3, 1: 3+1 = 4 ≠ 5. (C) 5, 0: 5+0 = 5 ✓ but product 0 ≠ 3. None exactly works."
+      text: "Factor: λ² − 5λ + 6 = (λ − 2)(λ − 3). Roots 2 and 3. Answer (B)."
     }],
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "Vieta's for missing roots."
+        body: "Vieta's for missing roots from trace/det."
       }, {
         label: "KEY STEP",
-        body: "Let unknown eigvals be a, b. From sum and product:\n4 + a + b = 9 → a + b = 5.\n4·a·b = 12 → a·b = 3.\nThen a, b are roots of λ² - 5λ + 3 = 0. Discriminant = 25 - 12 = 13. λ = (5 ± √13)/2 ≈ 4.30, 0.70."
+        body: "Let unknown eigvals be a, b.\nTrace: 4 + a + b = 9 → a + b = 5.\nDet: 4·a·b = 24 → a·b = 6.\nThen a, b satisfy λ² − (a+b)λ + ab = λ² − 5λ + 6 = 0."
       }, {
         label: "COMPUTATION",
-        body: "Non-integer roots. None of the given options match exactly. The problem's numbers may need adjustment; the TECHNIQUE is correct: form sum + product → quadratic. (C) is the listed answer per key."
+        body: "λ² − 5λ + 6 = (λ − 2)(λ − 3) ⇒ {a, b} = {2, 3}. Answer (B)."
       }, {
         label: "VERIFICATION",
-        body: "Always check: sum of eigvals = trace, product = det."
+        body: "Sum: 4 + 2 + 3 = 9 ✓. Product: 4·2·3 = 24 ✓."
       }],
-      gateCheck: "Vieta's reduces unknowns.",
-      speed: "60s.",
-      whatMadeHard: "Algebra.",
-      generalization: "Universal.",
-      linkedConcept: "C5.2.",
-      negAdvisory: "Attempt: Vieta's. (C) per intended; verify problem data."
+      gateCheck: "Vieta's reduces unknowns to a quadratic.",
+      speed: "45s.",
+      whatMadeHard: "Setting up sum and product correctly.",
+      generalization: "Universal — works for any n × n given trace and det.",
+      linkedConcept: "C5.2 Vieta's.",
+      negAdvisory: "Attempt: Vieta's gives clean factoring. (B) wins."
     }
   }];
   const C67_TECHNIQUES = [{

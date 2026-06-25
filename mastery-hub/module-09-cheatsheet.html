@@ -27,7 +27,7 @@
 
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
 
 <style>
   .cheat-card {
@@ -674,16 +674,36 @@ function App() {
         <div className="max-w-5xl mx-auto px-5 grid lg:grid-cols-[180px,1fr] gap-6">
           {/* TOC sidebar (sticky on lg+) */}
           <aside className="hidden lg:block">
-            <div className="sticky top-[140px] space-y-1">
-              {toc.map(t => (
-                <a key={t.id} href={"#" + t.id}
-                  className="block px-3 py-1.5 rounded text-sm transition-colors"
-                  style={{color: "var(--text-dim)", border: "1px solid transparent"}}
-                  onMouseEnter={e => { e.target.style.color = "var(--accent)"; e.target.style.background = "var(--accent-soft)"; }}
-                  onMouseLeave={e => { e.target.style.color = "var(--text-dim)"; e.target.style.background = "transparent"; }}>
-                  {t.label}
+            <div className="sticky top-[140px] space-y-3">
+              <div>
+                <div style={{fontSize: 9, letterSpacing: "0.18em", color: "var(--text-mute)", padding: "4px 8px", fontWeight: 700}}>SECTIONS</div>
+                {toc.map(t => (
+                  <a key={t.id} href={"#" + t.id}
+                    className="block px-3 py-1.5 rounded text-sm transition-colors"
+                    style={{color: "var(--text-dim)", border: "1px solid transparent"}}
+                    onMouseEnter={e => { e.target.style.color = "var(--accent)"; e.target.style.background = "var(--accent-soft)"; }}
+                    onMouseLeave={e => { e.target.style.color = "var(--text-dim)"; e.target.style.background = "transparent"; }}>
+                    {t.label}
+                  </a>
+                ))}
+              </div>
+              <div style={{borderTop: "1px solid var(--border)", paddingTop: 10}}>
+                <div style={{fontSize: 9, letterSpacing: "0.18em", color: "var(--text-mute)", padding: "4px 8px", fontWeight: 700}}>🎯 PROBLEM LABS</div>
+                {window.MODULES.filter(m => m.lab).map(m => (
+                  <a key={m.num} href={m.lab}
+                    className="block px-3 py-1.5 rounded text-[12px] transition-colors"
+                    style={{color: "var(--text-dim)", border: "1px solid transparent"}}
+                    onMouseEnter={e => { e.target.style.color = "var(--accent-2)"; e.target.style.background = "var(--accent-2-soft)"; }}
+                    onMouseLeave={e => { e.target.style.color = "var(--text-dim)"; e.target.style.background = "transparent"; }}>
+                    M{m.num} Lab
+                  </a>
+                ))}
+                <a href="module-10-mocktest.html"
+                  className="block px-3 py-1.5 rounded text-[12px] mt-1 transition-colors font-semibold"
+                  style={{color: "var(--accent-3)", border: "1px solid var(--accent-3-border)", background: "var(--accent-3-soft)"}}>
+                  📝 Mock Test
                 </a>
-              ))}
+              </div>
             </div>
           </aside>
 
@@ -694,13 +714,14 @@ function App() {
 
         <ModuleFooter
           moduleNum={9}
-          nextModuleTitle="Full GATE Mock Test — 20 timed questions"
+          nextModuleTitle="Mock Test — 20 timed GATE-style questions"
           nextModuleFile="module-10-mocktest.html"
           checklist={[
             "I can locate any formula by typing a 1-word query.",
             "I can recall the rank-nullity theorem, solution classification table, and Big Equivalence Theorem.",
             "I can recite the 12 matrix-type eigenvalue signatures.",
-            "I can use this page as my final-day exam reference."
+            "I can use this page as my final-day exam reference.",
+            "I've taken the Mock Test at least once to identify weak modules."
           ]}
         />
       </div>

@@ -1772,20 +1772,20 @@ const C31_PROBLEMS = [
   {
     id: "c31-h3", difficulty: "hard", kind: "nat", marks: 2, timeTarget: 80,
     tags: ["Application Counting"],
-    statement: <span>An n-node electrical network has the requirement that one node is grounded (reference). The number of INDEPENDENT KCL equations is ___.</span>,
-    answer: "n-1",
+    statement: <span>An 8-node electrical network has the requirement that one node is grounded (reference). The number of INDEPENDENT KCL equations is ___.</span>,
+    answer: 7,
     tolerance: 0,
     hints: [
       { label: "Conceptual redirect", text: "KCL at each node gives one equation; but with all nodes, the sum is automatically zero (conservation)." },
       { label: "Key step", text: "n nodes → n KCL equations, but only n - 1 are independent." },
-      { label: "Near-complete", text: "n - 1. (For NAT, enter the algebraic answer interpretation; for a specific n, n-1.)" },
+      { label: "Near-complete", text: "For n = 8: 8 - 1 = 7." },
     ],
     solution: {
       steps: [
         { label: "TRIGGER", body: "KCL equations: one per node, but they sum to zero (currents balance globally), so one is redundant." },
         { label: "KEY STEP", body: "n nodes, n KCL equations. Sum of all KCL = 0 (total current in = total out). So rank = n - 1." },
-        { label: "COMPUTATION", body: "Independent equations: n - 1." },
-        { label: "VERIFICATION", body: "Grounding one node fixes the redundancy: take n - 1 independent KCL + 1 ground condition." },
+        { label: "COMPUTATION", body: "For n = 8: independent equations = n - 1 = 7." },
+        { label: "VERIFICATION", body: "Grounding one node fixes the redundancy: take n - 1 = 7 independent KCL + 1 ground condition." },
       ],
       gateCheck: "Conservation laws often have one redundant equation per closed system.",
       speed: "Conceptual: 30 seconds.",

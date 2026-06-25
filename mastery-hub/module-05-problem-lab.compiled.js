@@ -3820,39 +3820,39 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
       type: "attempt",
       text: "Attempt"
     },
-    statement: /*#__PURE__*/React.createElement("span", null, "If det(A) = 5 and B is obtained from A by (i) swapping rows 1 and 2, then (ii) multiplying row 3 by 3, then (iii) adding 2 times row 1 to row 2. Find det(B)."),
+    statement: /*#__PURE__*/React.createElement("span", null, "If det(A) = 5 and B is obtained from A by (i) swapping rows 1 and 2, then (ii) multiplying row 3 by 3, then (iii) multiplying row 1 by 2. Find det(B)."),
     options: ["30", "-30", "5", "-5"],
     answer: "B",
     hints: [{
       label: "Conceptual redirect",
-      text: "Track each operation's effect on det."
+      text: "Track each operation's effect on det: swap × (−1), scale row by c × c, add multiple × 1."
     }, {
       label: "Key step",
-      text: "Swap: ×(-1). Scale: ×3. Add: ×1. Net: -3."
+      text: "Swap: × (−1). Scale row 3 by 3: × 3. Scale row 1 by 2: × 2. Net multiplier: (−1)·3·2 = −6."
     }, {
       label: "Near-complete",
-      text: "5 · -3 = -15? Let me recheck — actually -3·5 = -15. Hmm."
+      text: "det(B) = 5 · (−6) = −30."
     }],
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "Sequential row ops."
+        body: "Sequential row operations — multiply the per-op multipliers."
       }, {
         label: "KEY STEP",
-        body: "Start: det = 5. After swap: -5. After scale row 3 by 3: -5·3 = -15. After add: -15 (unchanged). Final: -15.\n\nHmm but option (B) is -30. Let me recheck. Actually with three ops the answer should be 5·(-1)·3·1 = -15.\n\nThe answer is -15, but the listed options only go to ±30. Possibly the intended is two row scales — adjust: if we ALSO scaled R₁ by 2 (instead of adding 2·R₁ to R₂), det would be -5·3·2 = -30.\n\nFor the technique-focus: apply each rule per op. Sign + factor accumulate."
+        body: "Start: det(A) = 5.\n(i) Swap R₁ ↔ R₂: det × (−1) → −5.\n(ii) Scale R₃ by 3: det × 3 → −15.\n(iii) Scale R₁ by 2: det × 2 → −30."
       }, {
         label: "COMPUTATION",
-        body: "-15 by literal reading; (B) -30 by alternate interpretation."
+        body: "det(B) = −30. Answer (B)."
       }, {
         label: "VERIFICATION",
-        body: "Track each: swap (×-1), scale (×c), add (×1)."
+        body: "Per-op rules: swap (×−1), scale (×c), add multiple of one row to another (×1, no change)."
       }],
-      gateCheck: "Track sign and factor.",
+      gateCheck: "Multiply per-op multipliers; track sign carefully.",
       speed: "30s.",
-      whatMadeHard: "Sign tracking.",
+      whatMadeHard: "Sign tracking through 3 ops.",
       generalization: "Universal.",
       linkedConcept: "C5.2.",
-      negAdvisory: "Attempt: rules. (B) per intended."
+      negAdvisory: "Attempt: rules. (B) wins."
     }
   }, {
     id: "c52-m3",
@@ -4036,40 +4036,40 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     timeTarget: 180,
     tags: ["KILLER", "Polynomial Entries"],
     statement: /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(B, null, "[KILLER]"), " For ", /*#__PURE__*/React.createElement(T, {
-      src: "A(\\lambda) = \\begin{pmatrix} 1-\\lambda & 2 \\\\ 3 & 4-\\lambda \\end{pmatrix}"
+      src: "A(\\lambda) = \\begin{pmatrix} 1-\\lambda & 3 \\\\ 4 & 2-\\lambda \\end{pmatrix}"
     }), ", the values of \u03BB for which det(A) = 0 are:"),
-    options: ["1, 4", "-2, 5", "5, -2", "All real"],
+    options: ["1, 2", "−2, 5", "−5, 2", "All real"],
     answer: "B",
     hints: [{
       label: "Conceptual redirect",
-      text: "Expand det as polynomial in λ."
+      text: "Expand det as a polynomial in λ, then factor."
     }, {
       label: "Key step",
-      text: "(1-λ)(4-λ) - 6 = 0 → λ² - 5λ - 2 = 0. λ = (5 ± √(25 + 8))/2 = (5 ± √33)/2."
+      text: "det = (1−λ)(2−λ) − 3·4 = λ² − 3λ + 2 − 12 = λ² − 3λ − 10."
     }, {
       label: "Near-complete",
-      text: "Hmm, doesn't give integer roots. Let me recheck. (1-λ)(4-λ) - 6 = 4 - λ - 4λ + λ² - 6 = λ² - 5λ - 2. Roots not integer.\n\nMaybe the intended matrix has entries adjusted. Let me try A = [[1-λ, 2],[3, 4-λ]] for det = 0: (1-λ)(4-λ) = 6 → 4 - 5λ + λ² = 6 → λ² - 5λ - 2 = 0. Roots (5 ± √33)/2 ≈ 5.37, -0.37. Doesn't match options.\n\nIf instead matrix is [[2-λ, 2],[3, 3-λ]]: (2-λ)(3-λ) - 6 = 6 - 5λ + λ² - 6 = λ² - 5λ. Roots 0, 5. Closer but not (B).\n\nFor (B) -2, 5: roots sum 3, product -10. λ² - 3λ - 10 = 0 from (1-λ)(4-λ) - 14 = ... Let's just go with the technique."
+      text: "λ² − 3λ − 10 = (λ − 5)(λ + 2) = 0 ⇒ λ = 5 or λ = −2."
     }],
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "Polynomial entries → polynomial det."
+        body: "Polynomial entries → polynomial det. This is exactly the characteristic polynomial of [[1, 3], [4, 2]]."
       }, {
         label: "KEY STEP",
-        body: "det = (1-λ)(4-λ) - 6 = 4 - λ - 4λ + λ² - 6 = λ² - 5λ - 2. Roots = (5 ± √33)/2. Not integer.\n\nFor option (B) -2, 5: sum 3, product -10 (Vieta's). λ² - 3λ - 10 = (λ-5)(λ+2). Different polynomial. The matrix entries needed for this would be different.\n\nThe technique is universal: form det polynomial, find roots."
+        body: "det(A) = (1 − λ)(2 − λ) − (3)(4) = (2 − 3λ + λ²) − 12 = λ² − 3λ − 10."
       }, {
         label: "COMPUTATION",
-        body: "(B) per intended; actual roots depend on exact matrix."
+        body: "λ² − 3λ − 10 = (λ − 5)(λ + 2). Roots: λ = 5, −2. Answer (B)."
       }, {
         label: "VERIFICATION",
-        body: "Sum of roots = trace ('5' or '3'), product = det at λ = 0 ('-2' or '-10')."
+        body: "Vieta's: sum of roots = 3 = trace ✓. Product = −10 = det([[1, 3], [4, 2]]) = 2 − 12 = −10 ✓."
       }],
-      gateCheck: "Polynomial entries → polynomial det.",
+      gateCheck: "λ-matrix det → char poly of constant matrix.",
       speed: "60s.",
-      whatMadeHard: "Algebra.",
-      generalization: "Same for any λ-matrix.",
-      linkedConcept: "M6 Char poly.",
-      negAdvisory: "Attempt: method. (B) per key."
+      whatMadeHard: "Algebra and factoring.",
+      generalization: "Same for any λ-matrix arising from A − λI.",
+      linkedConcept: "M6 Char poly, Eigenvalues.",
+      negAdvisory: "Attempt: factor the quadratic. (B) wins."
     }
   }];
   const C52_TECHNIQUES = [{
@@ -4898,7 +4898,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
         body: "2."
       }, {
         label: "VERIFICATION",
-        body: "x = 8 - 3·2 = 2. Check: 2(2) + 3(2) = 4 + 6 = 10 ≠ 8. Hmm.\n\nLet me recompute. From eq 1: 2x + 3y = 8. If y = 2: 2x + 6 = 8 → x = 1. Check eq 2: 1 + 4 = 5 ✓. So y = 2 is correct, x = 1."
+        body: "Find x: from eq 1, 2x + 3(2) = 8 → x = 1. Check eq 2: 1 + 2(2) = 5 ✓. Solution (x, y) = (1, 2). Answer y = 2."
       }],
       gateCheck: "Cramer formula.",
       speed: "60s.",

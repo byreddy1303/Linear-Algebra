@@ -3866,37 +3866,37 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     marks: 2,
     timeTarget: 100,
     tags: ["A^k from CH"],
-    statement: /*#__PURE__*/React.createElement("span", null, "For 2\xD72 A with char poly \u03BB\xB2 - \u03BB - 1 (Fibonacci-like), the coefficient of A in A\u2074 = a\xB7A + b\xB7I is ___."),
-    answer: 5,
+    statement: /*#__PURE__*/React.createElement("span", null, "For 2\xD72 A with characteristic polynomial \u03BB\xB2 \u2212 \u03BB \u2212 1 (Fibonacci-like), express A\u2074 = a\xB7A + b\xB7I. The coefficient a is ___."),
+    answer: 3,
     tolerance: 0,
     hints: [{
       label: "Conceptual redirect",
-      text: "A² = A + I. A³ = A·A² = A² + A = 2A + I. A⁴ = A·A³ = 2A² + A = 2(A+I) + A = 3A + 2I. Wait, let me recompute: A⁴ = A·A³ = A(2A + I) = 2A² + A = 2(A+I) + A = 3A + 2I. So coefficient = 3? Hmm. Let me redo with cleaner steps."
+      text: "By Cayley-Hamilton, A² = A + I. Iterate to reduce A⁴ to a linear combination of A and I."
     }, {
       label: "Key step",
-      text: "A² = A + I (Fib structure). A³ = A·(A+I) = A² + A = (A+I) + A = 2A + I. A⁴ = A·(2A+I) = 2A² + A = 2(A+I) + A = 3A + 2I. Coefficient of A = 3."
+      text: "A³ = A·A² = A(A + I) = A² + A = (A + I) + A = 2A + I."
     }, {
       label: "Near-complete",
-      text: "Actually let me verify: A^k = F_k · A + F_{k-1} · I (Fibonacci). F_4 = 3, F_3 = 2. So A^4 = 3A + 2I. Coefficient = 3. So answer should be 3, not 5. Update accordingly during practice."
+      text: "A⁴ = A·A³ = A(2A + I) = 2A² + A = 2(A + I) + A = 3A + 2I. So a = 3."
     }],
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "Iterate CH for powers."
+        body: "Iterate Cayley-Hamilton to reduce A⁴ to lower powers."
       }, {
         label: "KEY STEP",
-        body: "Char poly λ² = λ + 1. So A² = A + I.\nA³ = A²·A = (A+I)·A = A² + A = (A+I) + A = 2A + I.\nA⁴ = A³·A = (2A+I)·A = 2A² + A = 2(A+I) + A = 3A + 2I.\nCoefficient of A = 3. (Per Fibonacci pattern A^k = F_k·A + F_{k-1}·I; here F_4 = 3.)"
+        body: "Char poly λ² − λ − 1 = 0 ⇒ A² = A + I.\nA³ = A · A² = A(A + I) = A² + A = (A + I) + A = 2A + I.\nA⁴ = A · A³ = A(2A + I) = 2A² + A = 2(A + I) + A = 3A + 2I."
       }, {
         label: "COMPUTATION",
-        body: "3 per calculation; the NAT field has 5 which may be a different convention or problem variant."
+        body: "A⁴ = 3A + 2I ⇒ a = 3, b = 2."
       }, {
         label: "VERIFICATION",
-        body: "Eigvals of A: golden ratio φ and 1-φ. A^4 eigvals: φ^4, (1-φ)^4. φ² = φ + 1, φ^4 = (φ+1)² = φ² + 2φ + 1 = 3φ + 2. Confirms 3A + 2I form."
+        body: "Fibonacci pattern: Aᵏ = Fₖ·A + Fₖ₋₁·I. For k = 4: F₄ = 3, F₃ = 2. ✓\nEigenvalue check: φ⁴ = (φ + 1)² = 3φ + 2 ✓ (where φ is the golden ratio root)."
       }],
-      gateCheck: "Recursive substitution.",
+      gateCheck: "Recursive substitution via Cayley-Hamilton.",
       speed: "90s.",
-      whatMadeHard: "Computation.",
-      generalization: "Fibonacci pattern.",
+      whatMadeHard: "Repeating substitution without arithmetic slips.",
+      generalization: "Fibonacci pattern Aᵏ = Fₖ·A + Fₖ₋₁·I for this char poly.",
       linkedConcept: "C7.2."
     }
   }, {
@@ -3995,33 +3995,33 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     kind: "mcq",
     marks: 2,
     timeTarget: 150,
-    tags: ["KILLER", "A^5 + A^-1"],
-    statement: /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(B, null, "[KILLER]"), " For 3\xD73 A with char poly \u03BB\xB3 - 6\u03BB\xB2 + 11\u03BB - 6, A\u207B\xB9 equals:"),
-    options: ["(11I - 6A + A²)/6", "(A² - 6A + 11I)/6", "(6I + A - A²)/11", "Cannot determine."],
+    tags: ["KILLER", "A⁻¹ via CH"],
+    statement: /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(B, null, "[KILLER]"), " For 3\xD73 A with char poly \u03BB\xB3 \u2212 6\u03BB\xB2 + 11\u03BB \u2212 6, A\u207B\xB9 equals:"),
+    options: ["(A² − 6A + 11I) / 6", "(6I − 11A + A²) / 6", "(6I + A − A²) / 11", "Cannot determine."],
     answer: "A",
     hints: [{
       label: "Conceptual redirect",
-      text: "A³ - 6A² + 11A - 6I = 0 → 6I = A³ - 6A² + 11A → I = (A³ - 6A² + 11A)/6 → A⁻¹ = (A² - 6A + 11I)/6."
+      text: "Apply Cayley-Hamilton: p(A) = 0. Then multiply both sides by A⁻¹ to isolate it."
     }, {
       label: "Key step",
-      text: "Hmm let me redo: multiply both sides of p(A) = 0 by A⁻¹: A² - 6A + 11I - 6A⁻¹ = 0 → 6A⁻¹ = A² - 6A + 11I → A⁻¹ = (A² - 6A + 11I)/6."
+      text: "p(A) = A³ − 6A² + 11A − 6I = 0. Multiply both sides by A⁻¹: A² − 6A + 11I − 6A⁻¹ = 0."
     }, {
       label: "Near-complete",
-      text: "So (B) is more accurate; the listed answer (A) reorders terms with a sign. Verify by checking conventions."
+      text: "Solve for A⁻¹: 6A⁻¹ = A² − 6A + 11I ⇒ A⁻¹ = (A² − 6A + 11I)/6. Answer (A)."
     }],
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "CH inversion algorithm."
+        body: "Cayley-Hamilton inversion algorithm."
       }, {
         label: "KEY STEP",
-        body: "p(A) = A³ - 6A² + 11A - 6I = 0. Multiply by A⁻¹: A² - 6A + 11I - 6A⁻¹ = 0. Solve: 6A⁻¹ = A² - 6A + 11I → A⁻¹ = (A² - 6A + 11I)/6."
+        body: "By CH, p(A) = A³ − 6A² + 11A − 6I = 0.\nMultiply both sides by A⁻¹: A² − 6A + 11I − 6A⁻¹ = 0.\nRearrange: 6A⁻¹ = A² − 6A + 11I ⇒ A⁻¹ = (A² − 6A + 11I) / 6."
       }, {
         label: "COMPUTATION",
-        body: "(B) by clean derivation. (A) lists 11I − 6A + A² = A² − 6A + 11I — equivalent term order. So both (A) and (B) are mathematically equal."
+        body: "Answer (A)."
       }, {
         label: "VERIFICATION",
-        body: "Eigvals of A: 1, 2, 3. A⁻¹ eigvals: 1, 1/2, 1/3. p(λ)/6 = (λ² - 6λ + 11)/6. At λ=1: (1-6+11)/6 = 6/6 = 1 ✓. At λ=2: (4-12+11)/6 = 3/6 = 1/2 ✓."
+        body: "Eigenvalue check: A has eigvals 1, 2, 3 (roots of char poly). A⁻¹ should have eigvals 1, 1/2, 1/3.\nEvaluate p(λ)/6 with p(λ) = λ² − 6λ + 11:\nλ=1: (1−6+11)/6 = 6/6 = 1 ✓.\nλ=2: (4−12+11)/6 = 3/6 = 1/2 ✓.\nλ=3: (9−18+11)/6 = 2/6 = 1/3 ✓."
       }],
       gateCheck: "Same template for any A.",
       speed: "60s.",
@@ -4231,42 +4231,43 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
   }, {
     id: "c73-m1",
     difficulty: "medium",
-    kind: "nat",
+    kind: "mcq",
     marks: 2,
     timeTarget: 60,
-    tags: ["AB Eig"],
-    statement: /*#__PURE__*/React.createElement("span", null, "For 2\xD72 A with eigvals 2, 3, and B with eigvals 1, -1, the trace of AB equals trace of BA = ___. (Hint: not from eigvals alone but trace identity.)"),
-    answer: 0,
-    tolerance: 0,
+    tags: ["AB vs BA — Cyclic Trace"],
+    statement: /*#__PURE__*/React.createElement("span", null, "Let A and B be 2\xD72 matrices with eigenvalues ", "{", "2, 3", "}", " and ", "{", "1, \u22121", "}", " respectively. Which of the following ALWAYS holds (regardless of the specific A, B)?"),
+    options: ["tr(AB) = tr(BA) and det(AB) = det(BA).", "tr(AB) > tr(BA).", "AB = BA.", "det(AB) = det(A) + det(B)."],
+    answer: "A",
     hints: [{
       label: "Conceptual redirect",
-      text: "trace(AB) = trace(BA) is cyclic property. Doesn't tell us numerically without matrices."
+      text: "Two identities are universal for any A, B (same size): trace is cyclic, and determinant is multiplicative."
     }, {
       label: "Key step",
-      text: "Without specific A, B can't compute. But tr(AB) = tr(BA) is a constant identity. Most likely intended answer using diagonal example: A = diag(2,3), B = diag(1,-1), AB = diag(2,-3), tr = -1. Hmm."
+      text: "tr(AB) = tr(BA) (cyclic property). det(AB) = det(A)·det(B) = det(B)·det(A) = det(BA)."
     }, {
       label: "Near-complete",
-      text: "Problem requires more specific info. Skip or test specific matrices. Often shorthand for tr(AB) = tr(BA) = same value."
+      text: "Both identities hold for ANY A, B of the same size. Answer (A)."
     }],
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "Trace property."
+        body: "Identities that are universal for matrix products."
       }, {
         label: "KEY STEP",
-        body: "tr(AB) = tr(BA) — cyclic invariance. The numeric value depends on specific A, B."
+        body: "tr(AB) = Σᵢⱼ AᵢⱼBⱼᵢ = Σⱼᵢ BⱼᵢAᵢⱼ = tr(BA) — cyclic.\ndet(AB) = det(A)·det(B) = det(B)·det(A) = det(BA) — scalar multiplication commutes."
       }, {
         label: "COMPUTATION",
-        body: "Diagonal A, B example: tr(AB) = 2·1 + 3·(-1) = -1."
+        body: "Answer (A). Both identities hold regardless of specific A, B."
       }, {
         label: "VERIFICATION",
-        body: "Equality is identity; numeric value varies."
+        body: "(B) tr(AB) − tr(BA) = 0 always, not strictly > or <. (C) AB ≠ BA generally (matrix mult non-commutative). (D) det of sum doesn't decompose."
       }],
-      gateCheck: "tr(AB) = tr(BA) always.",
+      gateCheck: "Cyclic trace + multiplicative det are universal.",
       speed: "30s.",
-      whatMadeHard: "Specific computation.",
-      generalization: "Universal.",
-      linkedConcept: "C2.5."
+      whatMadeHard: "Distractor (C) preys on confusion of identity-of-product vs equality-of-matrices.",
+      generalization: "Universal for any square A, B of the same size.",
+      linkedConcept: "C2.5, C7.3.",
+      negAdvisory: "Attempt: theorems. (A) wins."
     }
   }, {
     id: "c73-m2",
@@ -4826,33 +4827,33 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     kind: "nat",
     marks: 2,
     timeTarget: 50,
-    tags: ["Multi"],
-    statement: /*#__PURE__*/React.createElement("span", null, "For 3\xD73 A with eigvals 1, 2, 3, the sum of eigvals of (A\xB2 - I)(A - 2I) is ___."),
-    answer: 6,
+    tags: ["Polynomial of A"],
+    statement: /*#__PURE__*/React.createElement("span", null, "For 3\xD73 A with eigenvalues 1, 2, 3, the sum of eigenvalues of (A\xB2 \u2212 I)(A \u2212 2I) is ___."),
+    answer: 8,
     tolerance: 0,
     hints: [{
       label: "Conceptual redirect",
-      text: "p(λ) = (λ² - 1)(λ - 2)."
+      text: "For polynomial p, eigenvalues of p(A) are p(λᵢ). Their sum = trace = Σ p(λᵢ)."
     }, {
       label: "Key step",
-      text: "p(1) = 0, p(2) = 0, p(3) = 8·1 = 8."
+      text: "p(λ) = (λ² − 1)(λ − 2). Evaluate: p(1) = 0·(−1) = 0. p(2) = 3·0 = 0. p(3) = 8·1 = 8."
     }, {
       label: "Near-complete",
-      text: "Sum: 0 + 0 + 8 = 8."
+      text: "Sum = 0 + 0 + 8 = 8."
     }],
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "Polynomial of A."
+        body: "Polynomial-of-A → polynomial-of-eigenvalues rule."
       }, {
         label: "KEY STEP",
-        body: "p(λ) = (λ²-1)(λ-2). p(1) = 0·(-1) = 0. p(2) = 3·0 = 0. p(3) = 8·1 = 8. Sum 8."
+        body: "p(λ) = (λ² − 1)(λ − 2). Compute at each eigenvalue:\np(1) = (1 − 1)(1 − 2) = 0 · (−1) = 0.\np(2) = (4 − 1)(2 − 2) = 3 · 0 = 0.\np(3) = (9 − 1)(3 − 2) = 8 · 1 = 8."
       }, {
         label: "COMPUTATION",
-        body: "Note: answer is 8 per direct calc, NAT field shows 6. Adjust on practice."
+        body: "Sum of eigenvalues of p(A) = 0 + 0 + 8 = 8."
       }, {
         label: "VERIFICATION",
-        body: "Universal."
+        body: "Two eigenvalues are zero (since p has roots at λ = 1, 2, ±1) ⇒ p(A) is singular and rank-1."
       }],
       gateCheck: "p(λ) for each.",
       speed: "30s.",
@@ -5215,37 +5216,37 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     kind: "nat",
     marks: 2,
     timeTarget: 70,
-    tags: ["Identity Form"],
-    statement: /*#__PURE__*/React.createElement("span", null, "For diagonalizable A with eigvals 1, -1, 2, find det(A\u2076 + A\u2074 + A\xB2 + I)."),
-    answer: 240,
+    tags: ["Polynomial of A", "det = Πλ"],
+    statement: /*#__PURE__*/React.createElement("span", null, "For diagonalizable A with eigenvalues 1, \u22121, 2, find det(A\u2076 + A\u2074 + A\xB2 + I)."),
+    answer: 1360,
     tolerance: 0,
     hints: [{
       label: "Conceptual redirect",
-      text: "p(λ) = λ⁶ + λ⁴ + λ² + 1."
+      text: "p(A) eigenvalues are p(λᵢ). det = product of eigenvalues."
     }, {
       label: "Key step",
-      text: "p(1) = 4, p(-1) = 4, p(2) = 64 + 16 + 4 + 1 = 85."
+      text: "p(λ) = λ⁶ + λ⁴ + λ² + 1. p(1) = 1+1+1+1 = 4. p(−1) = 1+1+1+1 = 4. p(2) = 64 + 16 + 4 + 1 = 85."
     }, {
       label: "Near-complete",
-      text: "Hmm 4·4·85 = 1360, not 240. Re-check problem variant."
+      text: "det = 4 · 4 · 85 = 1360."
     }],
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "f(A) eigvals."
+        body: "f(A) eigenvalues + det = product of eigenvalues."
       }, {
         label: "KEY STEP",
-        body: "p(λ) = λ⁶+λ⁴+λ²+1. p(1)=4. p(-1)=4. p(2)=85. det=4·4·85=1360."
+        body: "p(λ) = λ⁶ + λ⁴ + λ² + 1.\np(1) = 1 + 1 + 1 + 1 = 4.\np(−1) = 1 + 1 + 1 + 1 = 4 (even polynomial in λ).\np(2) = 64 + 16 + 4 + 1 = 85."
       }, {
         label: "COMPUTATION",
-        body: "1360 (NAT may need adjustment from 240). Real GATE problem would have cleaner numbers."
+        body: "det(p(A)) = product of eigenvalues = 4 · 4 · 85 = 1360."
       }, {
         label: "VERIFICATION",
-        body: "Universal."
+        body: "Note λ = 1 and λ = −1 give the same p value (4) because p is an even polynomial in λ."
       }],
-      gateCheck: "p(λ) for each, then product.",
+      gateCheck: "Evaluate p(λᵢ) for each eigenvalue, then multiply.",
       speed: "60s.",
-      whatMadeHard: "Computation.",
+      whatMadeHard: "Arithmetic on the 6th power.",
       generalization: "Universal.",
       linkedConcept: "C7.4."
     }

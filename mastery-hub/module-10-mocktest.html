@@ -27,7 +27,7 @@
 
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
 
 <style>
   .mock-question-card {
@@ -155,7 +155,7 @@ const QUESTIONS = [
   /* ===== M2 — SPAN & SUBSPACES (3 questions) ===== */
   {
     id: "q3", mod: 2, marks: 1, kind: "nat",
-    question: <span>Find the dimension of span{(1, 0, 1), (0, 1, 1), (1, 1, 2)} in ℝ³.</span>,
+    question: <span>Find the dimension of span{'{(1, 0, 1), (0, 1, 1), (1, 1, 2)}'} in ℝ³.</span>,
     answer: 2, tolerance: 0,
     explanation: "Note v₃ = v₁ + v₂. So rank = 2 (only v₁, v₂ independent). Dimension = 2 (a plane).",
     tags: ["Span", "Dimension"],
@@ -258,9 +258,9 @@ const QUESTIONS = [
   {
     id: "q13", mod: 5, marks: 2, kind: "mcq",
     question: <span>For 2×2 A with eigenvalues 2 and 5, det(A² − 4A + 3I) equals:</span>,
-    options: [ "0", "9", "21", "Cannot determine" ],
+    options: [ "0", "9", "−8", "Cannot determine" ],
     answer: "C",
-    explanation: "p(λ) = λ² - 4λ + 3 = (λ-1)(λ-3). p(2) = -1, p(5) = 8. det = (-1)·8 = -8. Hmm, let me recheck: p(2) = 4-8+3 = -1, p(5) = 25-20+3 = 8. Product = -8. Closest option (C) = 21? Adjust during practice; technique is p(λ) for each eigval, det = product.",
+    explanation: "p(λ) = λ² − 4λ + 3 = (λ−1)(λ−3). For each eigenvalue of A: p(2) = 4 − 8 + 3 = −1; p(5) = 25 − 20 + 3 = 8. det(p(A)) = product of eigenvalues = (−1) · 8 = −8.",
     tags: ["det of p(A)", "Eigenvalues"],
   },
   {
@@ -276,17 +276,17 @@ const QUESTIONS = [
   {
     id: "q15", mod: 6, marks: 1, kind: "mcq",
     question: <span>For 2×2 A with trace 5 and det 6, the eigenvalues are:</span>,
-    options: [ "1, 6", "2, 3", "−1, 6", "3, 2 (same as B)" ],
+    options: [ "1 and 6", "2 and 3", "−1 and 6", "−2 and −3" ],
     answer: "B",
-    explanation: "λ² - 5λ + 6 = (λ-2)(λ-3). Eigenvalues 2 and 3. Use trace-det quadratic.",
+    explanation: "Trace-det quadratic: λ² − 5λ + 6 = (λ − 2)(λ − 3) = 0 ⇒ λ = 2, 3. Verify: 2 + 3 = 5 = trace ✓; 2·3 = 6 = det ✓.",
     tags: ["Trace-Det Quadratic", "20-sec method"],
   },
   {
     id: "q16", mod: 6, marks: 2, kind: "mcq",
     question: <span>If A has eigenvalues 1, 2, 3, then det(A² + A + I) equals:</span>,
-    options: [ "3·7·13 = 273", "3·7·13", "Both (A) and (B)", "0" ],
+    options: [ "0", "91", "273", "Cannot determine" ],
     answer: "C",
-    explanation: "p(λ) = λ² + λ + 1. p(1) = 3, p(2) = 7, p(3) = 13. det = 3·7·13 = 273. (A) and (B) are the same.",
+    explanation: "p(λ) = λ² + λ + 1. p(1) = 3, p(2) = 7, p(3) = 13. det(p(A)) = product of eigenvalues = 3 · 7 · 13 = 273.",
     tags: ["f(A) eigenvalues", "Polynomial"],
   },
   {

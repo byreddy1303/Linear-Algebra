@@ -5377,21 +5377,21 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
       text: "Set y = z = 0: x = 6. → (6, 0, 0)."
     }, {
       label: "Near-complete",
-      text: "(A) or (C); both work, but (A) follows the algorithm."
+      text: "(6, 0, 0): 6 + 0 + 0 = 6 ✓. Only (A) satisfies; (C) gives 1 + 1 + 1 = 3 ≠ 6."
     }],
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "Particular sol — convenient choice."
+        body: "Particular solution — set free variables to convenient values."
       }, {
         label: "KEY STEP",
-        body: "Set y = 0, z = 0 (free). x = 6. xₚ = (6, 0, 0)."
+        body: "Set y = z = 0 (free vars). Then x = 6. So xₚ = (6, 0, 0)."
       }, {
         label: "COMPUTATION",
-        body: "(A). Note (C) also satisfies (1+1+1 = 3 ≠ 6 — wait, (1,1,1) gives 3, not 6. So (C) is wrong)."
+        body: "Answer (A). Verify: 6 + 0 + 0 = 6 ✓."
       }, {
         label: "VERIFICATION",
-        body: "(6, 0, 0): 6+0+0 = 6 ✓."
+        body: "(C) (1, 1, 1) gives 1 + 1 + 1 = 3 ≠ 6, so it's NOT a solution and was a trap."
       }],
       gateCheck: "Always verify particular sol.",
       speed: "10s.",
@@ -6027,16 +6027,16 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "Reverse: null basis → RREF."
+        body: "Reverse direction: given null basis, find RREF row(s)."
       }, {
         label: "KEY STEP",
-        body: "Both basis vectors share: x₁ + x₂ = 0 (from (1,1,0)) and free x₃. So row: x₁ + x₂ + 0·x₃ = 0 → (1, 1, 0)? No — RREF would be (1, 1, 0). Let me recheck. From (1,1,0): if x₂ = 1, x₁ = ?. We had basis (1, 1, 0) meaning x₁ = 1, x₂ = 1, x₃ = 0 satisfies Ax = 0. So row coefficients: 1·1 + 1·c₂ + 0·c₃ = 0 means c₂ = -1 if c₁ = 1. RREF: (1, -1, 0)."
+        body: "The RREF rows must be orthogonal to every null basis vector.\nLet the unique RREF row be (a, b, c). Then:\n(a, b, c) · (1, 1, 0) = a + b = 0 ⇒ a = −b.\n(a, b, c) · (0, 0, 1) = c = 0.\nSet a = 1: row = (1, −1, 0)."
       }, {
         label: "COMPUTATION",
-        body: "(A)."
+        body: "Answer (A) — RREF row is (1, −1, 0)."
       }, {
         label: "VERIFICATION",
-        body: "(1, -1, 0)·(1, 1, 0) = 0 ✓. (1, -1, 0)·(0, 0, 1) = 0 ✓."
+        body: "(1, −1, 0) · (1, 1, 0) = 1 − 1 + 0 = 0 ✓. (1, −1, 0) · (0, 0, 1) = 0 ✓."
       }],
       gateCheck: "Null basis → row dependencies.",
       speed: "60s.",
@@ -6070,16 +6070,16 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "Free var contribution = 1 in its slot."
+        body: "Free variable contribution = 1 in its own slot."
       }, {
         label: "KEY STEP",
-        body: "Free x₃, x₄. For x₄ = 1, x₃ = 0: x₁ = -1, x₂ = -(-1)·0 - 3·1 wait, let me recompute. Row 1: x₁ + 2x₃ + x₄ = 0 → x₁ = -2(0) - 1(1) = -1. Row 2: x₂ - x₃ + 3x₄ = 0 → x₂ = (0) - 3(1) = -3. Vector (-1, -3, 0, 1)."
+        body: "Free variables are x₃ and x₄. Set x₄ = 1 and x₃ = 0; solve for pivot variables.\nRow 1: x₁ + 2x₃ + x₄ = 0 ⇒ x₁ = −2(0) − 1(1) = −1.\nRow 2: x₂ − x₃ + 3x₄ = 0 ⇒ x₂ = 0 − 3(1) = −3.\nBasis vector: (−1, −3, 0, 1)."
       }, {
         label: "COMPUTATION",
-        body: "Position 4 = 1 (set by free var assignment)."
+        body: "Position 4 of (−1, −3, 0, 1) = 1."
       }, {
         label: "VERIFICATION",
-        body: "Trivially the free var's slot."
+        body: "By construction, the free variable that is set to 1 always appears as 1 in its slot of the corresponding basis vector."
       }],
       gateCheck: "Free var slot has value 1.",
       speed: "20s.",
@@ -6577,38 +6577,38 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
     statement: /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(B, null, "[KILLER]"), " The 5 \xD7 3 system ", /*#__PURE__*/React.createElement(T, {
       src: "\\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 4 \\\\ 1 & 3 & 9 \\\\ 1 & 4 & 16 \\\\ 1 & 5 & k \\end{pmatrix} \\mathbf{x} = \\begin{pmatrix} 0 \\\\ 0 \\\\ 0 \\\\ 0 \\\\ 0 \\end{pmatrix}"
     }), " has non-trivial solutions iff k = ___."),
-    options: ["25 only", "Any value (always has trivial only)", "k ≠ 25", "Always non-trivial regardless of k"],
-    answer: "A",
+    options: ["k = 25 only", "Trivial solution only for every k (no non-trivial exists)", "k ≠ 25", "Always non-trivial regardless of k"],
+    answer: "B",
     hints: [{
       label: "Conceptual redirect",
-      text: "5 equations 3 unknowns — overdetermined. Non-trivial null ⇔ rank < 3."
+      text: "Non-trivial null ⇔ rank(A) < n = 3 (n = number of unknowns)."
     }, {
       label: "Key step",
-      text: "First 4 rows are Vandermonde V(1, 2, 3, 4) which is 4 × 3 with rank 3. For overall rank < 3, the 5th row must be dependent on first 4. Since first 4 already independent (rank 3) and span the column space, 5th row must lie in the row span of first 4, AND row 5 (1, 5, k) corresponds to Vandermonde with x = 5: should be (1, 5, 25). So k = 25 makes row 5 = Vandermonde extension."
+      text: "Examine rank just from the first FOUR rows: V(1, 2, 3, 4) is a 4 × 3 Vandermonde with distinct generators, so it has full column rank = 3."
     }, {
       label: "Near-complete",
-      text: "Hmm wait — rank of [first 4 rows] for column space. Let me re-examine. The matrix has 5 rows, 3 cols. rank ≤ 3 always. For non-trivial null: rank < 3. First 4 rows form V(1,2,3,4) which is 4×3 with FULL column rank 3. Adding row 5 can't decrease rank — rank already 3. So nullity = 0 always. Trivial only. Wait but the question implies non-trivial happens for some k. Let me reconsider: actually maybe the question means the row 5 must NOT make matrix have rank 3 — but first 4 rows already give rank 3. So rank 3 always. Trivial sol only always. So answer is (B) trivial only always."
+      text: "Adding row 5 cannot DECREASE rank. So rank(A) = 3 for every k ⇒ nullity = 0 ⇒ only the trivial solution exists for any k."
     }],
     solution: {
       steps: [{
         label: "TRIGGER",
-        body: "5 × 3 system, non-trivial null."
+        body: "Homogeneous 5×3 system — non-trivial null ⇔ rank < 3 (rank-nullity)."
       }, {
         label: "KEY STEP",
-        body: "For Ax = 0 with 5×3 A: non-trivial null ⇔ rank < 3.\nFirst 4 rows: V(1, 2, 3, 4) Vandermonde, 4 × 3 with rank 3 (full col rank).\nAdding row 5 cannot DECREASE rank. So rank ≥ 3 ⇒ rank = 3 ⇒ nullity = 0 ⇒ trivial sol only.\nAnswer: trivial sol always — option (B)."
+        body: "First 4 rows form V(1, 2, 3, 4), a 4 × 3 Vandermonde matrix. Distinct generators ⇒ full column rank 3. Adding a 5th row can only INCREASE or keep rank — never decrease. So rank(A) = 3 for all k."
       }, {
         label: "COMPUTATION",
-        body: "Trivial only always. Option (B). However if the problem's intended answer is (A) k = 25 — that's a SLIGHTLY different problem (e.g., consistency of system Ax = b, not null space). For the homogeneous system as stated, answer is (B)."
+        body: "rank(A) = 3 = n always ⇒ nullity = 0 ⇒ only trivial solution. Answer: (B)."
       }, {
         label: "VERIFICATION",
-        body: "rank already 3 from first 4 rows; nullity = 0 always."
+        body: "Trap: the value k = 25 makes row 5 equal to the Vandermonde extension (1, 5, 25), which keeps the matrix Vandermonde-shaped but rank stays 3 — that affects which rows are dependent on others, not the column rank."
       }],
-      gateCheck: "Overdetermined homogeneous with full col rank → trivial only.",
+      gateCheck: "Adding rows never decreases rank. Look at the existing rank floor first.",
       speed: "60s.",
-      whatMadeHard: "Recognizing first 4 already saturate rank.",
-      generalization: "Same.",
-      linkedConcept: "C4.4.",
-      negAdvisory: "Attempt: rank analysis. (B) under given interpretation."
+      whatMadeHard: "Trap: students compute when row 5 is dependent on rows 1–4 and pick k = 25. But row-dependence doesn't change COLUMN rank.",
+      generalization: "Overdetermined homogeneous system with full column rank ⇒ only trivial solution.",
+      linkedConcept: "C4.3 Rank invariance, C4.4 Rank-Nullity.",
+      negAdvisory: "Attempt: (A) is the classic trap. (B) is correct."
     }
   }];
   const C47_TECHNIQUES = [{
@@ -6654,22 +6654,19 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
   const C47_PYQS = [{
     year: "GATE-Style A",
     marks: 2,
-    statement: /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(B, null, "(Representative GATE Solution Theory PYQ.)"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "For x + y + z = 6, 2x + 3y + z = 11, 3x + ky + z = k\xB2, determine k such that the system has infinite solutions."),
+    statement: /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(B, null, "(Representative GATE Solution Theory PYQ.)"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "For x + y + z = 6, 2x + 3y + z = 11, 3x + ky + z = k\xB2, determine k such that the system has NO solution."),
     solution: [{
       label: "REDUCE",
-      body: "R₂ - 2R₁: (0, 1, -1 | -1). R₃ - 3R₁: (0, k-3, -2 | k²-18). R₃ - (k-3)R₂: (0, 0, -2+k-3 | k²-18 + (k-3)). = (0, 0, k-5 | k² + k - 21)."
+      body: "R₂ → R₂ − 2R₁: (0, 1, −1 | −1).\nR₃ → R₃ − 3R₁: (0, k−3, −2 | k²−18).\nR₃ → R₃ − (k−3)R₂: (0, 0, (k−3)−2 | k²−18 + (k−3)) = (0, 0, k−5 | k² + k − 21)."
     }, {
-      label: "CASE",
-      body: "Infinite ⇔ rank A = rank [A|b] < 3 ⇔ k - 5 = 0 AND k² + k - 21 = 0. k = 5: 25 + 5 - 21 = 9 ≠ 0. So at k = 5: row (0, 0, 0 | 9) → INCONSISTENT, not infinite."
-    }, {
-      label: "RECONCILE",
-      body: "Re-examine: at k = 5, the system is inconsistent (no sol), not infinite. For infinite, both conditions must hold simultaneously — they don't here. So NO k gives infinite. System has unique sol for k ≠ 5, no sol at k = 5."
+      label: "CASE ANALYSIS",
+      body: "No solution ⇔ rank A < rank [A|b] ⇔ the last row reads 0 = (non-zero).\nThis requires k − 5 = 0 AND k² + k − 21 ≠ 0.\nAt k = 5: coefficient is 0, augmented entry = 25 + 5 − 21 = 9 ≠ 0. ✓ So at k = 5 the row reads 0 = 9 — INCONSISTENT."
     }, {
       label: "ANSWER",
-      body: "No k gives infinite. (Adjust to specific problem variants.)"
+      body: "k = 5 gives no solution. For k ≠ 5, the system has a unique solution."
     }, {
       label: "TRAP",
-      body: "Always check BOTH coefficient and augmented row reductions at the candidate k."
+      body: "Don't ask for infinite solutions: at the candidate k = 5 the augmented entry is non-zero, so we get inconsistency, not infinite. Always check BOTH coefficient and augmented column after the reduction."
     }]
   }, {
     year: "GATE-Style B",

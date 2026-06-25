@@ -20,6 +20,7 @@ window.MODULES = [
   { num: 8,  title: "Decompositions",     file: "module-08-decompositions.html",   ready: true,  lab: "module-08-problem-lab.html" },
   { num: 9,  title: "Cheat Sheet",        file: "module-09-cheatsheet.html",       ready: true  },
   { num: 10, title: "Mock Test",          file: "module-10-mocktest.html",         ready: true  },
+  { num: 11, title: "Theorems Vault",     file: "module-11-theorems.html",         ready: true  },
 ];
 
 /* ────────────────────────────────────────────────────────────────
